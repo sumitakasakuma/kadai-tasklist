@@ -42,12 +42,12 @@ end
 
   def destroy
       set_task
-    @task.destroy
+        @task.destroy
 
     flash[:success] = 'Taskは正常に削除されました'
-    redirect_to task_url
+    redirect_to :action => 'index'
   end
-end
+
   private
   
   def set_task
@@ -55,5 +55,6 @@ end
   end
    # Strong Parameter
   def task_params
-    params.require(:task).permit(:content, :status)
+     params.require(:task).permit(:content, :status)
   end  
+end
