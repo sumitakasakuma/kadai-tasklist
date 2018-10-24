@@ -50,7 +50,10 @@ end
   private
   
   def set_task
-     @task = Task.find(params[:id])
+    @task = Task.find_by(id: params[:id])
+    unless @task && @task.user == current_user
+      redirect_to root_path
+    end
   end
 
    # Strong Parameter
